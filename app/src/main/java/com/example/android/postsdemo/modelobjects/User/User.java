@@ -3,17 +3,31 @@ package com.example.android.postsdemo.modelobjects.User;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class User implements Parcelable {
-
+    @Expose
+    @SerializedName("name")
     private int mID;
+    @Expose
+    @SerializedName("name")
     private String mName;
+    @Expose
+    @SerializedName("name")
     private String mUsername;
+    @Expose
+    @SerializedName("name")
     private String mEmail;
+    @Expose
+    @SerializedName("name")
     private Address mAddress;
+    @Expose
+    @SerializedName("name")
     private Company mCompany;
 
     public User(int mID, String mName, String mUsername, String mEmail, Address mAddress, Company mCompany) {

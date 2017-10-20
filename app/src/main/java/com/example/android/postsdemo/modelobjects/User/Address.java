@@ -3,16 +3,23 @@ package com.example.android.postsdemo.modelobjects.User;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class Address implements Parcelable {
 
+    @Expose
     private String mStreet;
+    @Expose
     private String mSuite;
+    @Expose
     private String mCity;
+    @Expose
     private String mZipCode;
+    @Expose
     private GeoLocal mGeoLocal;
 
     public Address(String mStreet, String mSuite, String mCity, String mZipCode, GeoLocal mGeoLocal) {

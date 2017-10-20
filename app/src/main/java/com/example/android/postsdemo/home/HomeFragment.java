@@ -5,15 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.android.postsdemo.detail.DetailFragment;
-import com.example.android.postsdemo.modelobjects.general.Post;
 import com.example.android.postsdemo.R;
 import com.example.android.postsdemo.RecyclerHomeViewAdapter;
 import com.example.android.postsdemo.databinding.FragmentHomeBinding;
+import com.example.android.postsdemo.detail.DetailFragment;
+import com.example.android.postsdemo.modelobjects.general.Post;
 
 import java.util.List;
 
@@ -24,7 +25,18 @@ import java.util.List;
 public class HomeFragment extends Fragment implements HomeView{
 
     private FragmentHomeBinding mBinding;
-    private RecyclerHomeViewAdapter recyclerHomeViewAdapter;
+    private RecyclerHomeViewAdapter mRecyclerHomeViewAdapter;
+
+    private HomePresenter mHomePresenter;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        HomeModel homeModel = new HomeModelImpl();
+        mHomePresenter = new HomePresenterImpl(this, homeModel);
+        mHomePresenter.getPosts();
+    }
 
     @Nullable
     @Override
@@ -36,16 +48,13 @@ public class HomeFragment extends Fragment implements HomeView{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-    }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        recyclerViewConfig();
     }
 
     @Override
     public void showPosts(List<Post> posts) {
-
+        mRecyclerHomeViewAdapter.updateView(posts);
     }
 
     @Override
@@ -66,7 +75,7 @@ public class HomeFragment extends Fragment implements HomeView{
     private void recyclerViewConfig(){
         mBinding.postsRecyclerView.setHasFixedSize(true);
 
-        recyclerHomeViewAdapter = new RecyclerHomeViewAdapter(new RecyclerHomeViewAdapter.onItemClickListener(){
+        mRecyclerHomeViewAdapter = new RecyclerHomeViewAdapter(new RecyclerHomeViewAdapter.onItemClickListener(){
             @Override
             public void onItemClick(View view, Post post) {
                 Fragment fragment = new DetailFragment();
@@ -76,6 +85,11 @@ public class HomeFragment extends Fragment implements HomeView{
                         .commit();
             }
         });
+
+        mBinding.postsRecyclerView.setAdapter(mRecyclerHomeViewAdapter);
+        mBinding.postsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }
+
+
 
 }

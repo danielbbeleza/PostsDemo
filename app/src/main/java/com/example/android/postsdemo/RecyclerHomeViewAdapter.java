@@ -64,4 +64,9 @@ public class RecyclerHomeViewAdapter extends RecyclerView.Adapter<RecyclerHomeVi
             return postsCardBinding;
         }
     }
+
+    public void updateView(List<Post> postList){
+        this.mPostsList = postList;
+        notifyDataSetChanged();
+    }
 }

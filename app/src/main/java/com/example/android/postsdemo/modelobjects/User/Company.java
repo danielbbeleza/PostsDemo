@@ -3,13 +3,18 @@ package com.example.android.postsdemo.modelobjects.User;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class Company implements Parcelable {
+    @Expose
     private String mName;
+    @Expose
     private String mCatchPhrase;
+    @Expose
     private String mBS;
 
     public Company(String mName, String mCatchPhrase, String mBS) {

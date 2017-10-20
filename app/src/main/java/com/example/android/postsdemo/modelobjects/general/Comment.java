@@ -3,15 +3,21 @@ package com.example.android.postsdemo.modelobjects.general;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class Comment implements Parcelable {
 
+    @Expose
     private int mPostID;
+    @Expose
     private int mID;
+    @Expose
     private String mEmail;
+    @Expose
     private String mBody;
 
     public Comment(int mPostID, int mID, String mEmail, String mBody) {

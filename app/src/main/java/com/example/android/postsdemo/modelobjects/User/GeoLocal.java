@@ -3,13 +3,17 @@ package com.example.android.postsdemo.modelobjects.User;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class GeoLocal implements Parcelable {
 
+    @Expose
     private String mLatitude;
+    @Expose
     private String mLongitude;
 
     public GeoLocal(String mLatitude, String mLongitude) {
