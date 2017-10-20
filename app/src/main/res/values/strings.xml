@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PostsDemo</string>
+
+    <!--Post Title-->
+    <string name="post_title_text">Title</string>
+
+    <!--Post Body-->
+    <string name="post_body_text">Body</string>
+</resources>
