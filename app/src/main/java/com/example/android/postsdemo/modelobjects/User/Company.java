@@ -4,17 +4,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by danielbeleza on 20/10/2017.
  */
 
 public class Company implements Parcelable {
+    @SerializedName("company.name")
     @Expose
     private String mName;
+    @SerializedName("company.catchphrase")
     @Expose
     private String mCatchPhrase;
     @Expose
+    @SerializedName("company.bs")
     private String mBS;
 
     public Company(String mName, String mCatchPhrase, String mBS) {

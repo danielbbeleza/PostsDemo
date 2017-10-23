@@ -6,4 +6,32 @@
 
     <!--Post Body-->
     <string name="post_body_text">Body</string>
+
+    <!--Error retrieving posts data text-->
+    <string name="error_retrieving_posts_data_text">Não foi possível receber os posts</string>
+
+    <!--Connection error retrieving data text-->
+    <string name="connection_error_retrieving_data_text">Erro na conexão</string>
+
+    <!--Error retrieving comments data text-->
+    <string name="error_retrieving_comments_data_text">Não foi possível atualizar os comentários</string>
+
+    <!--Detail fragment post title hint text-->
+    <string name="detail_fragment_post_title_hint_text">TITLE</string>
+
+    <!--Detail fragment post body hint text-->
+    <string name="detail_fragment_post_body_hint_text">BODY</string>
+
+    <!--Detail fragment post body hint text-->
+    <string name="detail_fragment_post_user_hint_text">USER</string>
+
+    <!--Detail fragment post body hint text-->
+    <string name="detail_fragment_post_commentaries_quantity_hint_text">COMMENTARIES QUANTITY</string>
+
+    <!--Texto do numero de vários Comentários-->
+    <string name="commentary_num_text"> comentários</string>
+
+    <!--Texto do numero de um Comentário-->
+    <string name="one_commentary_num_text"> comentário</string>
+
 </resources>

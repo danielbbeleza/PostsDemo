@@ -12,22 +12,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class User implements Parcelable {
     @Expose
-    @SerializedName("name")
+    @SerializedName("id")
     private int mID;
     @Expose
     @SerializedName("name")
     private String mName;
     @Expose
-    @SerializedName("name")
+    @SerializedName("username")
     private String mUsername;
     @Expose
-    @SerializedName("name")
+    @SerializedName("email")
     private String mEmail;
     @Expose
-    @SerializedName("name")
+    @SerializedName("address")
     private Address mAddress;
     @Expose
-    @SerializedName("name")
+    @SerializedName("company")
     private Company mCompany;
 
     public User(int mID, String mName, String mUsername, String mEmail, Address mAddress, Company mCompany) {

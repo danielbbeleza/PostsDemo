@@ -1,7 +1,7 @@
 package com.example.android.postsdemo;
 
 import com.example.android.postsdemo.modelobjects.User.User;
-import com.example.android.postsdemo.modelobjects.general.Comment;
+import com.example.android.postsdemo.modelobjects.general.Comments;
 import com.example.android.postsdemo.modelobjects.general.Post;
 
 import java.util.List;
@@ -19,7 +19,7 @@ public interface ApiService {
     Call<List<User>> getAllUsers();
 
     @GET("comments")
-    Call<List<Comment>> getAllComments();
+    Call<List<Comments>> getAllComments();
 
     @GET("posts")
     Call<List<Post>> getAllPosts();

@@ -1,6 +1,7 @@
 package com.example.android.postsdemo.home;
 
-import com.example.android.postsdemo.modelobjects.general.Post;
+import com.example.android.postsdemo.BasePresenter;
+import com.example.android.postsdemo.modelobjects.general.CompletePost;
 
 import java.util.List;
 
@@ -8,12 +9,14 @@ import java.util.List;
  * Created by danielbeleza on 19/10/2017.
  */
 
-public class HomePresenterImpl implements HomePresenter {
+public class HomePresenterImpl implements HomePresenter, BasePresenter {
+
+    private Long presenterID;
 
     private HomeModel mHomeModel;
     private HomeView mHomeView;
 
-    private List<Post> mPostList = null;
+    private List<CompletePost> mPostList;
 
     private States mStates;
 
@@ -21,31 +24,37 @@ public class HomePresenterImpl implements HomePresenter {
         ONSUCCESS, ONERROR, ONNOCONNECTION, ONNOCONNECTIONNOTADA
     }
 
-    public HomePresenterImpl(HomeView homeView, HomeModel homeModel) {
+    public HomePresenterImpl(HomeModel homeModel) {
         this.mHomeModel = homeModel;
-        this.mHomeView = homeView;
     }
 
     private void renderView() {
 
-        switch (mStates) {
-            case ONSUCCESS:
-                mHomeView.showPosts(mPostList);
-                break;
+        // If mHomeView was null, we were forcing a method in an empty instance *
+        if(mHomeView != null) {
+            // If mStates was null, then in the switch condition it would crash
+            if(mStates != null) {
 
-            case ONERROR:
-                mHomeView.showErrorMessage();
-                break;
+                switch (mStates) {
+                    case ONSUCCESS:
+                        mHomeView.showPosts(mPostList); // *
+                        break;
 
-            case ONNOCONNECTION:
-                mHomeView.showErrorMessageNoWifi();
-                break;
+                    case ONERROR:
+                        mHomeView.showErrorMessage(); // *
+                        break;
 
-            case ONNOCONNECTIONNOTADA:
-                mHomeView.showErrorMessageNoWifiNoData();
-                break;
-            default:
-                break;
+                    case ONNOCONNECTION:
+                        mHomeView.showErrorMessageNoWifi(); // *
+                        break;
+
+                    case ONNOCONNECTIONNOTADA:
+                        mHomeView.showErrorMessageNoWifiNoData(); // *
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 
@@ -53,9 +62,9 @@ public class HomePresenterImpl implements HomePresenter {
     public void getPosts() {
         mHomeModel.getPosts(new HomeModel.CallbackPosts() {
             @Override
-            public void onSuccess(List<Post> posts) {
+            public void onSuccess(List<CompletePost> completePosts) {
                 mStates = States.ONSUCCESS;
-                mPostList = posts;
+                mPostList = completePosts;
 
                 renderView();
             }
@@ -93,5 +102,15 @@ public class HomePresenterImpl implements HomePresenter {
     @Override
     public void onDetach() {
         mHomeView = null;
+    }
+
+    @Override
+    public Long getPresenterID() {
+        return presenterID;
+    }
+
+    @Override
+    public void setPresenterID(Long presenterID) {
+        this.presenterID = presenterID;
     }
 }
