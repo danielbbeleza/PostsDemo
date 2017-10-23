@@ -1,6 +1,6 @@
 package com.example.android.postsdemo.home;
 
-import com.example.android.postsdemo.modelobjects.general.Post;
+import com.example.android.postsdemo.modelobjects.general.CompletePost;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface HomeModel {
     void getPosts(CallbackPosts callbackPosts);
 
     interface CallbackPosts{
-        void onSuccess(List<Post> posts);
+        void onSuccess(List<CompletePost> posts);
 
         void onError();
 

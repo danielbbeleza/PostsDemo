@@ -1,6 +1,6 @@
 package com.example.android.postsdemo.home;
 
-import com.example.android.postsdemo.modelobjects.general.Post;
+import com.example.android.postsdemo.modelobjects.general.CompletePost;
 
 import java.util.List;
 
@@ -10,11 +10,13 @@ import java.util.List;
 
 public interface HomeView {
 
-    void showPosts(List<Post> posts);
+    void showPosts(List<CompletePost> posts);
 
     void showErrorMessage();
 
     void showErrorMessageNoWifi();
 
     void showErrorMessageNoWifiNoData();
+
+    void sendUserData();
 }
